@@ -1,10 +1,9 @@
-# HGJSearchBar
-* 在分类中扩展系统搜索框，自动显示隐藏取消按钮
-* 添加了输入栏的背景颜色属性
-* 创建后默认宽度为屏幕宽高度44，可以继续按照普通搜索栏自定义
+# HGJPullDownTool
+* 制作类似微信下拉选择器
+* 只支持右上角按钮，不然小箭头会显示有误
 
 ##CocoaPods
-``` pod 'HGJSearchBar' ```
+``` pod 'HGJPullDownTool' ```
 
 ##Requirements
 * Swift
@@ -13,30 +12,58 @@
 * ARC
 
 ##ScreenShot
-![](https://nj01ct01.baidupcs.com/file/627e6ccfb08bb023f96c3362952b13c7?bkt=p3-1400627e6ccfb08bb023f96c3362952b13c79f2da719000000007ea3&fid=1649281771-250528-16510458369690&time=1487746691&sign=FDTAXGERLBHS-DCb740ccc5511e5e8fedcff06b081203-Mvq3FHYRRnjzTQUk%2FxRx51PaRzQ%3D&to=63&size=32419&sta_dx=32419&sta_cs=0&sta_ft=gif&sta_ct=0&sta_mt=0&fm2=MH,Yangquan,Netizen-anywhere,,guangdongct&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=1400627e6ccfb08bb023f96c3362952b13c79f2da719000000007ea3&sl=72286287&expires=8h&rt=sh&r=659212329&mlogid=1220493197028938594&vuk=1649281771&vbdid=107365255&fin=HGJSearchBar1.gif&fn=HGJSearchBar1.gif&rtype=1&iv=0&dp-logid=1220493197028938594&dp-callid=0.1.1&hps=1&csl=400&csign=f6BEQCJ9LxY%2FYxUplutbhXDyJKw%3D&by=themis)
-##Datasource and delegate
-```swift
-public protocol HGJSearchDelegate : NSObjectProtocol {
-    
-    func HGJSearchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
-    
-}
-```
+![](https://nj01ct01.baidupcs.com/file/0752911363111bb760023b3f09110782?bkt=p3-14000752911363111bb760023b3f09110782eb0c068800000001dfb2&fid=1649281771-250528-516542598084636&time=1487763526&sign=FDTAXGERLBHS-DCb740ccc5511e5e8fedcff06b081203-asAcsYf1cqei8UDUIpSl98YpzRU%3D&to=63&size=122802&sta_dx=122802&sta_cs=0&sta_ft=gif&sta_ct=0&sta_mt=0&fm2=MH,Yangquan,Netizen-anywhere,,guangdongct&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=14000752911363111bb760023b3f09110782eb0c068800000001dfb2&sl=80937039&expires=8h&rt=sh&r=381943428&mlogid=1225012193629819486&vuk=1649281771&vbdid=107365255&fin=HGJPullDownTool1.gif&fn=HGJPullDownTool1.gif&rtype=1&iv=0&dp-logid=1225012193629819486&dp-callid=0.1.1&hps=1&csl=268&csign=gRHdHZJ9bvk2W7rLBQZAODX4I9c%3D&by=themis)
 
 ##Usage Demo
 + FirstStep （创建对象）
 ```swift
-let searchBar = UISearchBar().HGJSearchBar
-        searchBar.HGJDelegate = self
-        searchBar.textfieldColor = UIColor.red  //默认为UIColor.gray
-        (self.view as! UITableView).tableHeaderView = searchBar
+//MARK: - Life cycle
+override func viewDidLoad() {
+super.viewDidLoad()
+
+// 1. 添加右上角加号按钮
+let rightBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 22, height: 22))
+rightBtn.setBackgroundImage(UIImage.init(named: "addIcon"), for: .normal)
+rightBtn.addTarget(self, action: #selector(self.showToolView), for: .touchUpInside)
+let rightItem = UIBarButtonItem(customView: rightBtn)
+self.navigationItem.rightBarButtonItem = rightItem
+
+
+// 2. 设置数据源
+let items = HGJPullDownToolItem.itemArrayFrom(iconNameArr:["1", "2", "3",], titleArr:["查找好友", "新的朋友", "查找群组"])
+
+
+// 3 创建下拉菜单
+self.pullDownTool = HGJPullDownTool(superView: UIApplication.shared.windows[0], clickView: rightBtn, itemArr: items, selectedItem: { (i, item) in
+
+// 0.1 创建控制器
+let vc = UIViewController()
+var titleArr = ["查找好友","新的朋友","查找群组"]
+var colorArr = [UIColor.red, UIColor.green, UIColor.brown]
+
+// 0.2 个性化
+vc.title = titleArr[i]
+vc.view.backgroundColor = colorArr[i]
+
+
+// 1.显示控制器
+self.navigationController?.pushViewController(vc, animated: true)
+
+})
+
+}
+
 ```
-+ Second （代理对象遵守协议,并实现协议）
++ Second （创建方法点击按钮显示下拉窗）
 ```swift
-    func HGJSearchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("\"" + searchText + "\"")
-    }
+private func showToolView() {
+self.pullDownTool?.show()
+}
 ```
+
+##Demo
+> DownLoad获取压缩文件里面的Demo获取更详细的信息
+
 
 ##Contact
 >如果你发现bug或有更好的改进，please pull reqeust me
