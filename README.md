@@ -42,18 +42,19 @@
         // 3 创建下拉菜单
         self.pullDownTool = HGJPullDownTool(superView: UIApplication.shared.windows[0], clickView: rightBtn, itemArr: items, selectedItem: { (i, item) in
 
-        // 0.1 创建控制器
-        let vc = UIViewController()
-        var titleArr = ["查找好友","新的朋友","查找群组"]
-        var colorArr = [UIColor.red, UIColor.green, UIColor.brown]
+            // 点击按钮后的回掉
+            // 0.1 创建控制器
+            let vc = UIViewController()
+            var titleArr = ["查找好友","新的朋友","查找群组"]
+            var colorArr = [UIColor.red, UIColor.green, UIColor.brown]
 
-        // 0.2 个性化
-        vc.title = titleArr[i]
-        vc.view.backgroundColor = colorArr[i]
+            // 0.2 个性化
+            vc.title = titleArr[i]
+            vc.view.backgroundColor = colorArr[i]
 
 
-        // 1.显示控制器
-        self.navigationController?.pushViewController(vc, animated: true)
+            // 1.显示控制器
+            self.navigationController?.pushViewController(vc, animated: true)
 
         })
 
