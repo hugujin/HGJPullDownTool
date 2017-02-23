@@ -42,7 +42,7 @@
         // 3 创建下拉菜单
         self.pullDownTool = HGJPullDownTool(superView: UIApplication.shared.windows[0], clickView: rightBtn, itemArr: items, selectedItem: { (i, item) in
 
-            // 点击按钮后的回掉
+            // 点击按钮后的回调
             // 0.1 创建控制器
             let vc = UIViewController()
             var titleArr = ["查找好友","新的朋友","查找群组"]
