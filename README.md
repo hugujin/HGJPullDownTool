@@ -1,3 +1,4 @@
+
 # HGJPullDownTool
 * 制作类似微信下拉选择器
 * 只支持右上角按钮，不然小箭头会显示有误
@@ -18,7 +19,7 @@
 * ARC
 
 ##ScreenShot
-![](https://nj01ct01.baidupcs.com/file/0752911363111bb760023b3f09110782?bkt=p3-14000752911363111bb760023b3f09110782eb0c068800000001dfb2&fid=1649281771-250528-516542598084636&time=1487763526&sign=FDTAXGERLBHS-DCb740ccc5511e5e8fedcff06b081203-asAcsYf1cqei8UDUIpSl98YpzRU%3D&to=63&size=122802&sta_dx=122802&sta_cs=0&sta_ft=gif&sta_ct=0&sta_mt=0&fm2=MH,Yangquan,Netizen-anywhere,,guangdongct&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=14000752911363111bb760023b3f09110782eb0c068800000001dfb2&sl=80937039&expires=8h&rt=sh&r=381943428&mlogid=1225012193629819486&vuk=1649281771&vbdid=107365255&fin=HGJPullDownTool1.gif&fn=HGJPullDownTool1.gif&rtype=1&iv=0&dp-logid=1225012193629819486&dp-callid=0.1.1&hps=1&csl=268&csign=gRHdHZJ9bvk2W7rLBQZAODX4I9c%3D&by=themis)
+![](https://thumbnail0.baidupcs.com/thumbnail/0752911363111bb760023b3f09110782?fid=1649281771-250528-516542598084636&time=1488186000&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-2G90hkw2yv4c%2Bm29hRPSKRM8%2BzA%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=1339282281263123214&dp-callid=0&size=c710_u400&quality=100)
 
 ##Usage Demo
 + FirstStep （创建对象）
